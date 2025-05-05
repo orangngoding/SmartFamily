@@ -111,7 +111,7 @@ const ProgramShowcase = () => {
                       </svg>
                     ))}
                   </div>
-                  <p className="text-sm italic text-gray-600">"{currentProgram.testimonial.quote}"</p>
+                  <p className="text-sm italic text-gray-600">&ldquo;{currentProgram.testimonial.quote}&rdquo;</p>
                   <div className="text-xs text-gray-500">
                     <span className="font-semibold">{currentProgram.testimonial.author}</span> • {currentProgram.testimonial.location}
                   </div>

@@ -1,18 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import Navbar from "../../home-component/navbar";
 import Footer from "../../home-component/footer";
 
 export default function KonsultasiKeluarga() {
-  const router = useRouter();
+  
   
   // State for multi-step form
   const [currentStep, setCurrentStep] = useState(1);
-  const [formSubmitted, setFormSubmitted] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
   
   // Form data state
@@ -149,12 +147,12 @@ export default function KonsultasiKeluarga() {
   useEffect(() => {
     if (formData.preferredDate) {
       const day = new Date(formData.preferredDate).toLocaleDateString('id-ID', { weekday: 'long' });
-  
+        
       // Filter consultants based on selected day
       const availableConsultants = consultants.filter(consultant =>
         consultant.availability.includes(day)
       );
-  
+        
       if (availableConsultants.length > 0) {
         // Generate time slots from 9 AM to 4 PM
         const slots = [];
@@ -168,11 +166,12 @@ export default function KonsultasiKeluarga() {
       } else {
         setAvailableSlots([]);
       }
-  
+        
       // Update state to only show consultants available on the selected day
       setFilteredConsultants(availableConsultants);
     }
-  }, [formData.preferredDate]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formData.preferredDate]); // Only depend on formData.preferredDate
   
   // State for filtered consultants
   const [filteredConsultants, setFilteredConsultants] = useState(consultants);
@@ -251,7 +250,6 @@ export default function KonsultasiKeluarga() {
     // Simulate API call with timeout
     setTimeout(() => {
       setIsLoading(false);
-      setFormSubmitted(true);
       
       // In a real app, this would send data to the backend
       console.log("Form submitted:", {

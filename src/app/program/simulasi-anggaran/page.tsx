@@ -62,7 +62,7 @@ export default function SimulasiAnggaran() {
   >([]);
 
   // Expense categories
-  const [categories, setCategories] = useState<Category[]>([
+  const [categories] = useState<Category[]>([
     {
       id: "kebutuhan-pokok",
       name: "Kebutuhan Pokok",
