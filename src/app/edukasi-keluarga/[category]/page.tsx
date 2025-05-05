@@ -339,18 +339,18 @@ const articles = {
   };
   
   // Article detail page component
-  export default function ArticleDetailPage({
+  export default async function ArticleDetailPage({
     params,
   }: {
-    params: { category: string };
+    params: Promise<{ category: string }>;
   }) {
-    const { category } = params;
-    
+    const { category } = await params;
+  
     // Check if the article exists
     if (!articles[category as keyof typeof articles]) {
       notFound();
     }
-    
+  
     const article = articles[category as keyof typeof articles];
   
     return (
